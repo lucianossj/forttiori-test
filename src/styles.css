@@ -2,3 +2,9 @@
 
 .russo-font { font-family: 'Russo One', sans-serif }
 .abel-font { font-family: 'Abel', sans-serif }
+
+body{
+
+  background-image: url("../src/app/images/poa.jpg");
+
+}

@@ -4,21 +4,208 @@
 <div class="container mt-4">
   <div class="row">
 
-    <div class="col-md-4">
-      <div class="card pl-2">
-        <app-minibus></app-minibus>
-      </div>
-    </div>
+    <!-- MINIBUS CARD - BEGIN -->
 
     <div class="col-md-4">
       <div class="card pl-2">
-        <app-bus></app-bus>
-      </div>
-    </div>
 
-    <div class="col-md-4">
-        <div class="card pl-2">
-          <app-itinerary></app-itinerary>
+        <div class="card-body">
+
+          <h5 class="card-title russo-font"><i class="material-icons"> airport_shuttle </i> Linhas de Lotação</h5>
+
+          <p class="card-text abel-font">Pesquisar linhas de Lotação: </p>
+
+          <div class="row">
+
+            <form>
+
+              <div class="input-group mb-3 col-md-12" >
+
+                <input type="text" class="form-control abel-font" formControlName="name">
+
+                <button class="btn btn-outline-primary" type="button" style="max-height: 40px">
+                  <i class="material-icons"> search </i> <i class="material-icons"> airport_shuttle </i> </button>
+
+              </div>
+
+              <div class="col-md-12">
+
+                <button class="btn btn-primary btn-lg abel-font" type="button" style="width: 100%" (click)="searchMinibus()"> Listar todas </button>
+
+              </div>
+
+            </form>
+
+          </div>
+
         </div>
+
+      </div>
+
     </div>
+
+    <!-- MINIBUS CARD - END -->
+
+    <!-- BUS CARD - BEGIN -->
+
+    <div class="col-md-4">
+
+      <div class="card pl-2" style="height: 100%">
+
+        <div class="card-body">
+
+          <h5 class="card-title russo-font"><i class="material-icons">directions_bus</i> Linhas de Ônibus</h5>
+
+          <p class="card-text abel-font"> Pesquisar linhas de Ônibus: </p>
+
+          <div class="row">
+
+            <form>
+
+              <div class="input-group mb-3 col-md-12" >
+
+                <input type="text" class="form-control abel-font" formControlName="name">
+
+                  <button class="btn btn-outline-primary" type="button" style="max-height: 40px;">
+                    <i class="material-icons"> search </i> <i class="material-icons"> directions_bus </i> </button>
+
+              </div>
+
+              <div class="col-md-12">
+
+                <button class="btn btn-primary btn-lg abel-font" type="button" style="width: 100%" (click)="searchBus()"> Listar todas </button>
+
+              </div>
+
+            </form>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- BUS CARD - END -->
+
+    <!-- ITINENARIES CARD - BEGIN -->
+
+    <div class="col-md-4">
+
+      <div class="card pl-2" style="height: 100%">
+
+        <div class="card-body">
+
+          <h5 class="card-title russo-font"><i class="material-icons">location_on</i> Itinerário</h5>
+
+          <p class="card-text abel-font">Informe o ID da linha para consultar o itinerário:</p>
+
+          <div class="row">
+
+            <form>
+
+              <div class="input-group mb-3 col-md-12" >
+
+                <input type="text" class="form-control abel-font" formControlName="name">
+
+                <button class="btn btn-outline-primary" type="button" style="max-height: 40px">
+                  <i class="material-icons"> search </i> <i class="material-icons"> location_on </i> </button>
+
+              </div>
+
+            </form>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    </div>
+
+    <!-- ITINERARIES CARD - END -->
+
+    <!-- MINIBUS TABLE - BEGIN -->
+
+    <div class="row mt-4" *ngIf="minibusLines">
+      <div class="col-md-12">
+        <div class="card pl-2">
+          <div class="card-body">
+            <div class="row">
+              <h5 class="card-title russo-font">
+                <i class="material-icons">airport_shuttle</i>
+                Linhas de Lotação</h5>
+
+              <table class="table table-hover" style="border-top: 2px solid #012998;" id="myTable">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Linha</th>
+                    <th>Código da Linha</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let m of minibusLines">
+                      <td>{{m.id}}</td>
+                      <td>{{m.nome}}</td>
+                      <td>{{m.codigo}}</td>
+                      <!--td>
+                        <button class="btn btn-primary" (click)="buscarPorLinha(l.id)">
+                          Ver Itinerário
+                        </button>
+                      <td-->
+                    </tr>
+                  </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MINIBUS TABLE - END -->
+
+    <!-- BUS TABLE - BEGIN -->
+
+    <div class="row mt-4" *ngIf="busLines">
+        <div class="col-md-12">
+          <div class="card pl-2">
+            <div class="card-body">
+              <div class="row">
+                <h5 class="card-title russo-font">
+                  <i class="material-icons"> directions_bus</i>
+                  Linhas de Ônibus</h5>
+
+                <table class="table table-hover" style="border-top: 2px solid #012998;">
+                    <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Linha</th>
+                      <th>Código da Linha</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let b of busLines">
+                        <td>{{b.id}}</td>
+                        <td>{{b.nome}}</td>
+                        <td>{{b.codigo}}</td>
+                        <!--td>
+                          <button class="btn btn-primary" (click)="buscarPorLinha(l.id)">
+                            Ver Itinerário
+                          </button>
+                        <td-->
+                      </tr>
+                    </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <!-- BUS TABLE - END -->
+
   </div>

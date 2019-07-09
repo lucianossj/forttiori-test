@@ -4,23 +4,24 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { MinibusComponent } from './minibus/minibus.component';
-import { BusComponent } from './bus/bus.component';
-import { ItineraryComponent } from './itinerary/itinerary.component';
+import { MinibusLinesService } from './services/minibus-lines.service';
+import { HttpClientModule } from '@angular/common/http';
+import { BusLinesService } from './services/bus-lines.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent,
-    MinibusComponent,
-    BusComponent,
-    ItineraryComponent
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    MinibusLinesService,
+    BusLinesService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
