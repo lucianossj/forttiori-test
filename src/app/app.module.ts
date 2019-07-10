@@ -11,6 +11,7 @@ import { IdForm } from './forms/idForm';
 import { MinibusNameForm } from './forms/minibusNameForm';
 import { BusNameForm } from './forms/busNameForm';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { GetItineraryService } from './services/get-itinerary.service';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     BusLinesService,
     IdForm,
     MinibusNameForm,
-    BusNameForm
+    BusNameForm,
+    GetItineraryService
   ],
   bootstrap: [AppComponent]
 })

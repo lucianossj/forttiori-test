@@ -5,6 +5,7 @@ import { FormGroup } from '@angular/forms';
 import { MinibusNameForm } from './forms/minibusNameForm';
 import { BusNameForm } from './forms/busNameForm';
 import { IdForm } from './forms/idForm';
+import { GetItineraryService } from './services/get-itinerary.service';
 
 @Component({
   selector: 'app-root',
@@ -16,8 +17,10 @@ export class AppComponent implements OnInit {
 
   minibusLines: Array<any>;
   busLines: Array<any>;
+  itineraries: Array<any>;
   searchResult: Array<any>;
   list: Array<any>;
+  peopleArray: Array<any>;
 
   public formMinibus: FormGroup;
   public formBus: FormGroup;
@@ -26,6 +29,7 @@ export class AppComponent implements OnInit {
   constructor(
     private minibusLinesService: MinibusLinesService,
     private busLinesService: BusLinesService,
+    private getItineraryService: GetItineraryService,
     private minibusNameForm: MinibusNameForm,
     private busNameForm: BusNameForm,
     private idForm: IdForm) {
@@ -47,6 +51,7 @@ export class AppComponent implements OnInit {
     this.minibusLines = null;
     this.busLines     = null;
     this.searchResult = null;
+    this.peopleArray  = null;
 
     this.minibusLinesService.search().subscribe(data => this.minibusLines = data);
 
@@ -57,6 +62,7 @@ export class AppComponent implements OnInit {
     this.minibusLines = null;
     this.busLines     = null;
     this.searchResult = null;
+    this.peopleArray  = null;
 
     this.busLinesService.search().subscribe(data => this.busLines = data);
 
@@ -72,7 +78,8 @@ export class AppComponent implements OnInit {
 
   filterMinibusName(search) {
 
-    this.busLines = null;
+    this.busLines     = null;
+    this.peopleArray  = null;
     this.minibusLines = this.list.filter(data => data.nome.toLowerCase().indexOf(search.toLowerCase()) >= 0);
 
   }
@@ -90,6 +97,31 @@ export class AppComponent implements OnInit {
     this.minibusLines = null;
     this.busLines = this.list.filter(data => data.nome.toLowerCase().indexOf(search.toLowerCase()) >= 0);
 
+  }
+
+  searchItinerary() {
+
+    this.minibusLines = null;
+    this.busLines     = null;
+    this.itineraries  = null;
+
+    const id = this.formItinerary.controls.id.value;
+    this.getItineraryService.search(id).subscribe(data => {
+      this.itineraries = data;
+      this.peopleArray = Object.keys(this.itineraries).map(i => this.itineraries[i]);
+      console.log(this.peopleArray);
+      });
+  }
+
+  public searchByLine(id) {
+    this.minibusLines = null;
+    this.busLines = null;
+    this.itineraries = null;
+    this.getItineraryService.search(id).subscribe(data => {
+      this.itineraries = data;
+      this.peopleArray = Object.keys(this.itineraries).map(i => this.itineraries[i]);
+      console.log(this.peopleArray);
+      });
   }
 
 }

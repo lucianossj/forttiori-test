@@ -139,7 +139,7 @@
                 <i class="material-icons">airport_shuttle</i>
                 Linhas de Lotação</h5>
 
-              <table class="table table-hover" style="border-top: 2px solid #012998;" id="myTable">
+              <table class="table table-hover abel-font" style="border-top: 2px solid #012998;" id="myTable">
                 <thead>
                   <tr>
                     <th>ID</th>
@@ -153,9 +153,9 @@
                       <td>{{m.nome}}</td>
                       <td>{{m.codigo}}</td>
                       <td>
-                        <!-->button class="btn btn-primary" (click)="searchMinibusByName(m.id)">
+                        <button class="btn btn-primary" (click)="searchByLine(m.id)">
                             Ver Itinerário
-                        </button-->
+                        </button>
                       <td>
                     </tr>
                   </tbody>
@@ -179,7 +179,7 @@
                   <i class="material-icons"> directions_bus</i>
                   Linhas de Ônibus</h5>
 
-                <table class="table table-hover" style="border-top: 2px solid #012998;">
+                <table class="table table-hover abel-font" style="border-top: 2px solid #012998;">
                     <thead>
                     <tr>
                       <th>ID</th>
@@ -193,12 +193,12 @@
                         <td>{{b.nome}}</td>
                         <td>{{b.codigo}}</td>
                         <td>
-                          <!-->button class="btn btn-primary" (click)="searchBusByName(l.id)">
+                          <button class="btn btn-primary" (click)="searchByLine(b.id)">
                             Ver Itinerário
-                          </!-->
+                          </button>
                         </td>
                       </tr>
-                    </tbody>
+                  </tbody>
                 </table>
               </div>
             </div>
@@ -208,4 +208,45 @@
 
     <!-- BUS TABLE - END -->
 
+    <!-- ITINERARY TABLE - BEGIN -->
+
+    <div class="row mt-4" *ngIf="peopleArray">
+      <div class="col-md-12">
+        <div class="card pl-2">
+          <div class="card-body">
+            <div class="row">
+              <h5 class="card-title russo-font"><i class="material-icons">location_searching</i>
+                Itinerário da linha
+              </h5>
+
+              <table class="table table-hover abel-font" style="border-top: 2px solid #012998;" id="myTable">
+                <thead>
+                  <tr>
+                    <th>Latitude</th>
+                    <th>Longitude</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let l of peopleArray">
+                    <td>{{l.lat}}</td>
+                    <td>{{l.lng}}</td>
+                    <td>
+                      <a href="https://www.google.com/maps/?q={{l.lat}},{{l.lng}}" target="_BLANK">
+                        <button class="btn btn-danger">
+                          Ver no mapa
+                        </button>
+                      </a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
   </div>
+
+  <!-- ITINERARY TABLE - END -->
+
+</div>
