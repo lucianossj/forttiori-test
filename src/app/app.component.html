@@ -17,13 +17,13 @@
 
           <div class="row">
 
-            <form>
+            <form [formGroup]="formMinibus">
 
               <div class="input-group mb-3 col-md-12" >
 
                 <input type="text" class="form-control abel-font" formControlName="name">
 
-                <button class="btn btn-outline-primary" type="button" style="max-height: 40px">
+                <button class="btn btn-outline-primary" type="button" style="max-height: 40px" (click)="searchMinibusByName()">
                   <i class="material-icons"> search </i> <i class="material-icons"> airport_shuttle </i> </button>
 
               </div>
@@ -60,13 +60,13 @@
 
           <div class="row">
 
-            <form>
+            <form [formGroup]="formBus">
 
               <div class="input-group mb-3 col-md-12" >
 
                 <input type="text" class="form-control abel-font" formControlName="name">
 
-                  <button class="btn btn-outline-primary" type="button" style="max-height: 40px;">
+                  <button class="btn btn-outline-primary" type="button" style="max-height: 40px;" (click)="searchBusByName()">
                     <i class="material-icons"> search </i> <i class="material-icons"> directions_bus </i> </button>
 
               </div>
@@ -103,11 +103,11 @@
 
           <div class="row">
 
-            <form>
+            <form [formGroup]="formItinerary">
 
               <div class="input-group mb-3 col-md-12" >
 
-                <input type="text" class="form-control abel-font" formControlName="name">
+                <input type="text" class="form-control abel-font" formControlName="id">
 
                 <button class="btn btn-outline-primary" type="button" style="max-height: 40px">
                   <i class="material-icons"> search </i> <i class="material-icons"> location_on </i> </button>
@@ -152,11 +152,11 @@
                       <td>{{m.id}}</td>
                       <td>{{m.nome}}</td>
                       <td>{{m.codigo}}</td>
-                      <!--td>
-                        <button class="btn btn-primary" (click)="buscarPorLinha(l.id)">
-                          Ver Itinerário
-                        </button>
-                      <td-->
+                      <td>
+                        <!-->button class="btn btn-primary" (click)="searchMinibusByName(m.id)">
+                            Ver Itinerário
+                        </button-->
+                      <td>
                     </tr>
                   </tbody>
               </table>
@@ -192,11 +192,11 @@
                         <td>{{b.id}}</td>
                         <td>{{b.nome}}</td>
                         <td>{{b.codigo}}</td>
-                        <!--td>
-                          <button class="btn btn-primary" (click)="buscarPorLinha(l.id)">
+                        <td>
+                          <!-->button class="btn btn-primary" (click)="searchBusByName(l.id)">
                             Ver Itinerário
-                          </button>
-                        <td-->
+                          </!-->
+                        </td>
                       </tr>
                     </tbody>
                 </table>

@@ -7,6 +7,10 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { MinibusLinesService } from './services/minibus-lines.service';
 import { HttpClientModule } from '@angular/common/http';
 import { BusLinesService } from './services/bus-lines.service';
+import { IdForm } from './forms/idForm';
+import { MinibusNameForm } from './forms/minibusNameForm';
+import { BusNameForm } from './forms/busNameForm';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,11 +20,16 @@ import { BusLinesService } from './services/bus-lines.service';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     MinibusLinesService,
-    BusLinesService
+    BusLinesService,
+    IdForm,
+    MinibusNameForm,
+    BusNameForm
   ],
   bootstrap: [AppComponent]
 })
