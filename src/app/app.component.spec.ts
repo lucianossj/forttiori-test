@@ -45,5 +45,48 @@ describe('AppComponent', () => {
   it('The component has been defined', () => {
     expect(component).toHaveBeenCalled();
   });
+
+  describe('searchMinibus: ', () => {
+    it('Test', () => {
+      expect();
+    });
+  });
+
+  describe('searchBus: ', () => {
+    it('Test', () => {
+      expect();
+    });
+  });
+
+  describe('searchMinibusByName: ', () => {
+    it('Test', () => {
+      expect();
+    });
+  });
+
+  describe('filterMinibusName: ', () => {
+    it('Test', () => {
+      expect();
+    });
+  });
+
+  describe('searchBusByName: ', () => {
+    it('Test', () => {
+      expect();
+    });
+  });
+
+  describe('searchItinerary: ', () => {
+    it('Test', () => {
+      expect();
+    });
+  });
+
+  describe('searchByLine: ', () => {
+    it('Test', () => {
+      expect();
+    });
+  });
+
 });
 
