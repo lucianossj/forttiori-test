@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class GetItineraryService {
 
   url = 'http://www.poatransporte.com.br/php/facades/process.php?a=il&p=';

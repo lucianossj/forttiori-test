@@ -1,4 +1,3 @@
-import { TestSuite } from '../../../pip-frontend/client/src/angular5/test-utils/test-suite';
 import { IdForm } from './forms/idForm';
 import { GetItineraryService } from './services/get-itinerary.service';
 import { MinibusLinesService } from './services/minibus-lines.service';
@@ -7,6 +6,9 @@ import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 import { BusLinesService } from './services/bus-lines.service';
 import { BusNameForm } from './forms/busNameForm';
 import { AppComponentStub as stub } from './app.component.stub';
+import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { MinibusNameForm } from './forms/minibusNameForm';
+import { HttpClient, HttpHandler } from '@angular/common/http';
 
 describe('AppComponent', () => {
 
@@ -15,38 +17,51 @@ describe('AppComponent', () => {
   let minibusLinesService: MinibusLinesService;
   let busLinesService: BusLinesService;
   let getItineraryService: GetItineraryService;
+  let miniBusNameForm: MinibusNameForm;
   let busNameForm: BusNameForm;
   let idForm: IdForm;
+  let formMinibus: FormGroup;
+  let formBus: FormGroup;
+  let formItinerary: FormGroup;
 
-  TestSuite.configure();
+  let formBuilder: FormBuilder = new FormBuilder();
+
+  miniBusNameForm
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [ ReactiveFormsModule ],
+      declarations: [ AppComponent ],
       providers: [
-        { provide: MinibusLinesService, useClass: stub ,},
-        { provide: BusLinesService, useClass: stub },
-        { provide: GetItineraryService, useClass: stub },
-        { provide: BusNameForm, useClass: stub },
-        { provide: IdForm, useClass: stub }
+        FormBuilder,
+        { provide: MinibusLinesService },
+        { provide: BusLinesService },
+        { provide: GetItineraryService },
+        MinibusNameForm,
+        BusNameForm,
+        IdForm,
+        { provide: FormGroup, useValue: formMinibus },
+        { provide: FormGroup, useValue: formBus },
+        { provide: FormGroup, useValue: formItinerary },
       ],
     }).compileComponents()
     .then(() => {
-      minibusLinesService = TestBed.get(MinibusLinesService);
-      busLinesService = TestBed.get(BusLinesService);
-      getItineraryService = TestBed.get(GetItineraryService);
-      busNameForm = TestBed.get(BusNameForm);
-      idForm = TestBed.get(IdForm);
+      formMinibus = TestBed.get(FormGroup);
+      formBus = TestBed.get(FormGroup);
+      formItinerary = TestBed.get(FormGroup);
 
       fixture = TestBed.createComponent(AppComponent);
       component = fixture.componentInstance;
+
+      fixture.detectChanges();
     });
   }));
 
   it('The component has been defined', () => {
-    expect(component).toHaveBeenCalled();
+    expect(component).toBeTruthy();
   });
 
-  describe('searchMinibus: ', () => {
+  /*describe('searchMinibus: ', () => {
     it('Test', () => {
       expect();
     });
@@ -86,7 +101,7 @@ describe('AppComponent', () => {
     it('Test', () => {
       expect();
     });
-  });
+  });*/
 
 });
 
